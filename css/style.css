@@ -1,0 +1,73 @@
+html,body,p,h1,h2,h3 {
+    color: white;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+::selection {
+    background: #FFC82D;
+}
+
+#sidebar {
+    margin: 0;
+    padding: 0;
+    top:0;
+    left:0;
+}
+
+.h4 {
+    color:white;
+    transform:rotate(90deg);
+    
+}
+#navbar {
+    color: white;
+    background-color: #444444;
+    border-radius: 10px;
+    transform: rotate(90deg);
+    text-align: center;
+    height: 300px;
+    width: 150px;
+    position: absolute;
+    top: 0px;
+    left: -175px; 
+    z-index: 6;
+}
+
+#navbar:hover{
+    animation-name: menu-slide;
+    animation-duration: 0.5s;
+    transform:translateX(200px) rotate(90deg);
+}
+
+#wrapper {
+    perspective: 1px;
+    width:100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#foreground {
+    position:absolute;
+    transform:translateZ(0);
+}
+
+
+#background {
+    color:white;
+    min-height:150vh;
+    width:185vw;
+    z-index:-1;
+    position:absolute;
+    background: repeating-linear-gradient(45deg,#000000,#000000 40px,#030303 40px,#030303 80px);
+    animation-name: background-slide;
+    animation-duration: 20s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    transform:translateZ(-1px) scale(2);
+}
