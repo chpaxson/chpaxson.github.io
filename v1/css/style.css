@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
 :root {
     --dark: #000000;
     --dark-accent: #090909;
@@ -8,6 +8,7 @@
 
 html,body,p,h1,h2,h3 {
     color: white;
+    font-family: Quicksand;
     margin: 0;
     padding: 0;
     max-width: 100%;
@@ -54,10 +55,15 @@ html,body,p,h1,h2,h3 {
     perspective: 1px;
     width:100vw;
     height: 100vh;
-    
     padding: 0;
     overflow-x: hidden;
     overflow-y: auto;
+}
+
+#sub-wrapper {
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
 #foreground {
@@ -74,7 +80,7 @@ html,body,p,h1,h2,h3 {
     width:185vw;
     z-index:-1;
     position:absolute;
-    background: repeating-linear-gradient(45deg,var(--dark),var(--dark) 40px,var(--dark-accent) 40px,var(--dark-accent) 80px);
+    background: repeating-linear-gradient(45deg,var(--dark),var(--dark) 20px,var(--dark-accent) 20px,var(--dark-accent) 40px);
     animation-name: background-slide;
     animation-duration: 15s;
     animation-timing-function: linear;

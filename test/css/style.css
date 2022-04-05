@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+:root {
+    --dark: #000000;
+    --dark-accent: #090909;
+    --light: black;
+    --light-accent: #d6d6d6;
+}
+
+html,body,p,h1,h2,h3 {
+    color: white;
+    font-family: Quicksand;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+::selection {
+    background: #FFC82D;
+}
+
+#sidebar {
+    margin: 0;
+    padding: 0;
+    top:0;
+    left:0;
+}
+
+.h4 {
+    color:white;
+    transform:rotate(90deg);
+    
+}
