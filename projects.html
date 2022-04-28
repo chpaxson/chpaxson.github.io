@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <!-- Standard stuff -->
+    <meta charset="utf-8" \>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <title>Charles's Resume</title>
+
+    <!-- Metadata -->
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="Charles Paxson" \>
+    <meta name="description" content="Charles Paxson's curriculum vitae/resume website" \>
+    <meta name="keywords" content="Paxson, Charles Paxson, Charles Henry Paxson, molecules" \>
+
+    <!-- Style info -->
+    <link rel="stylesheet" href="./css/projects.css" />
+</head>
+
+<body>
+    <div class="sidebar">
+        <p id="menu"> Menu </p>
+        <a href="index.html">About</a>
+        <a href="resume.html">Resume/CV</a>
+        <a href="projects.html">Projects</a>
+    </div>
+    <div class="main">
+        <div class="project" id="fishsense">
+            <h1> FishSense </h1>
+            <div class="project-content">
+                <div class="proj-left">
+                    <img class="img" src="./images/fishsense.png" />
+                    <img class="img" src="./images/fishsense-no-enclosure.png" />
+                </div>
+                <div class="proj-right">
+                    <p>
+                        <a href="http://e4e.ucsd.edu/fishsense">Fishsense</a> is a UCSD research project that utilizes depth cameras and AI to catalogue fish populations.  My job was to design the waterproof enclosure for its batteries, data storage, and AI processor.
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="project" id="Cycloidal Drive">
+            <h1> Cycloidal Drive </h1>
+            <div class="project-content">
+                <div class="proj-left">
+                    <img class="img" src="./images/cycloidal.png" />
+                </div>
+                <div class="proj-right">
+                    <p>
+                        This is a 15:1 cycloidal drive reducer.  I hope to use it to reduce BLDC motors for a 6-axis arm project, similar to <a href="
+                        https://hackaday.io/project/168259-atlas-6dof-3d-printed-universal-robot">Damian Lickindorf's Atlas robot</a>.
+                    </p>
+                    <p>
+                        The reducer has a hollow shaft, so it will be possible to run cables through it.  The design is somewhat based off of <a href="https://hackaday.io/project/168498-opencyre">Damian's OpenCyRe</a> and used guidance from <a href="https://blogs.solidworks.com/teacher/wp-content/uploads/sites/3/Building-a-Cycloidal-Drive-with-SOLIDWORKS.pdf">this blog post</a>.
+                    </p>
+                    <p>
+                        Unfortunately, I wasn't able to get it to work dynamically in SOLIDWORKS, though.  The cycloidal discs were made with equation-driven curves, which to get to form a full loop, had to be split in half.  This meant I could not use a cam-follower mate in the assembly.
+                    </p>
+                    <p>
+                        This project was quite fun, and I can see that I still have a long way to go in designing complex mechanical assemblies.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="contact">
+            <h3> Contact/Platforms</h3>
+            <a href="https://discord.com/users/288182931933888513">Discord</a>
+            <a href="mailto:tauindustries@gmail.com">Email</a>
+            <a href="https://github.com/molecules1">Github</a>
+            <a href="https://www.reddit.com/user/_molecules">Reddit</a>
+            <a href="https://www.youtube.com/channel/UCifYwaTzzs6sm_tgiWigJSA">Youtube</a>
+        </div>
+    </footer>
+</body>
+
+</html>
