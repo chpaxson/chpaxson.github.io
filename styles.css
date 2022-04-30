@@ -37,6 +37,7 @@ body {
         left: -160px;
         color: var(--text);
         background-color: var(--accent);
+        border-radius: 6px;
         overflow-x: hidden;
         transform: rotate(-270deg);
         transition: left 0.5s;
