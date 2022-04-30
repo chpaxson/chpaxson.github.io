@@ -18,6 +18,8 @@ function darkToggle() {
         document.body.style.setProperty("--link-text", "#5555ff");
         mode = "dark";
         localStorage.setItem("theme", "dark");
-    } else {}
+    } else {
+        mode = "dark";
+        localStorage.setItem("theme", "dark"); }
     mode = localStorage.getItem("theme");
 }
