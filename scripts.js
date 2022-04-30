@@ -1,7 +1,7 @@
 let mode = localStorage.getItem("theme");
 function setMode() {
     if (localStorage.getItem("theme") === "dark") { // reapply dark
-        document.body.style.setProperty("--bg", "#000000");
+        document.body.style.setProperty("--bg", "#1e1e1e");
         document.body.style.setProperty("--bg-accent", "#090909");
         document.body.style.setProperty("--text", "#FFFFFF");
         document.body.style.setProperty("--accent", "#ffbf00");
@@ -20,7 +20,7 @@ function darkToggle() {
         mode = "light";
         localStorage.setItem("theme", "light");
     } else if (mode === "light") { // enable dark
-        document.body.style.setProperty("--bg", "#000000");
+        document.body.style.setProperty("--bg", "#1e1e1e");
         document.body.style.setProperty("--bg-accent", "#090909");
         document.body.style.setProperty("--text", "#FFFFFF");
         document.body.style.setProperty("--accent", "#ffbf00");
