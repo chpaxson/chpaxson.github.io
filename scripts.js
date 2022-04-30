@@ -19,4 +19,5 @@ function darkToggle() {
         mode = "dark";
         localStorage.setItem("theme", "dark");
     } else {}
+    mode = localStorage.getItem("theme");
 }

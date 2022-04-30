@@ -17,12 +17,12 @@ html,body,p,h1,h2,h3 {
 
 body {
     --bg: #FFFFFF;
-    --bg-accent: #F6F6F6;
+    --bg-accent: #F9F9F9;
     --text: #000000;
     --accent: #ffbf00;
     --accent-accent: #ffd65e;
     --link-text: #0000FF;
-    background: repeating-linear-gradient(45deg, var(--bg), var(--bg) 30px, var(--bg-accent) 30px, var(--bg-accent) 60px);
+    /* background: repeating-linear-gradient(45deg, var(--bg), var(--bg) 30px, var(--bg-accent) 30px, var(--bg-accent) 60px); */
 }
 
 .sidebar {
