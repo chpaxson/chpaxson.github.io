@@ -1,4 +1,14 @@
 let mode = localStorage.getItem("theme");
+function setMode() {
+    if (localStorage.getItem("theme") === "dark") { // reapply dark
+        document.body.style.setProperty("--bg", "#000000");
+        document.body.style.setProperty("--bg-accent", "#090909");
+        document.body.style.setProperty("--text", "#FFFFFF");
+        document.body.style.setProperty("--accent", "#ffbf00");
+        document.body.style.setProperty("--accent-accent", "#ffd65e");
+        document.body.style.setProperty("--link-text", "#5555ff");
+    }
+}
 function darkToggle() {
     if (mode === "dark") { // disable dark
         document.body.style.setProperty("--bg", "#FFFFFF");
