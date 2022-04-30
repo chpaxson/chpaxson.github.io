@@ -1,20 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
 
-:root {
-    --dark: #000000;
-    --dark-accent: #090909;
-    --light: black;
-    --light-accent: #d6d6d6;
-}
-
-html,
-body,
-p,
-h1,
-h2,
-h3 {
+html,body,p,h1,h2,h3 {
     /* color: white; */
     font-family: Quicksand;
+    color: var(--text);
     margin: 0;
     padding: 0;
     max-width: 100%;
@@ -26,7 +15,15 @@ h3 {
     background: #FFC82D;
 }
 
-
+body {
+    --bg: #FFFFFF;
+    --bg-accent: #F9F9F9;
+    --text: #000000;
+    --accent: #ffbf00;
+    --accent-accent: #ffd65e;
+    --link-text: #0000FF;
+    background: repeating-linear-gradient(45deg, var(--bg), var(--bg) 30px, var(--bg-accent) 30px, var(--bg-accent) 60px);
+}
 
 .sidebar {
     width: 160px;
@@ -35,14 +32,15 @@ h3 {
     z-index: 1;
     top: 0;
     left: -160px;
-    background-color: #ffbf00;
+    color: var(--text);
+    background-color: var(--accent);
     overflow-x: hidden;
     transform: rotate(-270deg);
     transition: left 0.5s;
 }
 
 .sidebar:hover {
-    left: -75px;
+    left: -45px;
 }
 
 #menu {
@@ -89,6 +87,23 @@ h3 {
 }
 
 a {
-    color: blue;
+    color: var(--link-text);
     text-decoration: none;
+}
+
+#button-container {
+    text-align: center;
+    padding-top: 5px;
+}
+
+button {
+    font-family: Quicksand;
+    background-color: var(--accent);
+    font-style: italics;
+    font-size: 18px;
+    border-radius: 6px;
+}
+
+button:hover {
+    background-color: var(--accent-accent);
 }

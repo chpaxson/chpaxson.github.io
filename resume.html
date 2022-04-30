@@ -16,6 +16,7 @@
 
     <!-- Style info -->
     <link rel="stylesheet" href="resume.css" />
+    <script src="scripts.js"></script>
 </head>
 
 <body>
@@ -24,6 +25,7 @@
         <a href="/">About</a>
         <a href="resume">Resume/CV</a>
         <a href="projects">Projects</a>
+        <div id="button-container"><button onClick="darkToggle()"><i>Toggle Theme</i></button></div>
     </div>
     <div class="main">
         <div id="left">
@@ -44,12 +46,7 @@
                 <h2> Skills </h2>
                 <ul class="skill-list">
                     <li> Mechanical Design </li>
-                    <li> CAD </li>
-                        <ul class="skill-sub">
-                            <li> SOLIDWORKS <p style="font-style:italic"> (CSWA certified) </p> </li>
-                            <li> Fusion 360 </li>
-                            <li> Inventor </li>
-                        </ul>
+                    <li> CAD <span style="font-style:italic"> (CSWA certified) </span></li>
                     <li> Microsoft Office </li>
                     <li> LaTeX </li>
                     <li> HTML & CSS </li>
