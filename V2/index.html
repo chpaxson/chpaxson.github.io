@@ -23,15 +23,26 @@
     <script async src="https://unpkg.com/es-module-shims@1.3.6/dist/es-module-shims.js"></script>
 </head>
 
-<body onload="toggleMode()">
+<body onload="setMode()">
     <div class="bg"></div>
     <div class="wrapper">
         <div class="sidebar">
             <div class="menu">
                 <i class="menuIcons fas fa-bars"></i>
             </div>
-            <button class="darkMode" onClick="toggleMode()"> <i class="menuIcons fas fa-moon"></i> </button>
-            <button class="weatherMenu" onClick="weatherMenu()"> <i class="menuIcons fas fa-temperature-half"></i> </button>
+            <button class="darkMode" onClick="toggleMode()"> <i class="menuIcons fas fa-moon" id="darkModeButton"></i> </button>
+            <button class="weatherMenu" onClick="weatherMenu()">
+                <i class="menuIcons fas fa-temperature-half" id="weatherButton"></i>
+                <div class="weatherPopout">
+                    <p id="weatherError"></p>
+                    <div class="weatherData" id=""></div>
+                    <div class="weatherData" id="day1">  </div>
+                    <div class="weatherData" id="day2"> </div>
+                    <div class="weatherData" id="day3"> </div>
+                    <div class="weatherData" id="day4"> </div>
+                    <div class="weatherData" id="day5"> </div>
+                </div>
+            </button>
         </div>
         <div class="main">
             <div class="content">
@@ -40,25 +51,27 @@
                 <div class="contact">
                     <h3> Contact/Platforms</h3>
                     <a href="https://discord.com/users/288182931933888513">
-                        <i class="contactIcons fab fa-discord" aria-hidden="true"></i>
+                        <i class="contactIcons fab fa-discord" id="discord" aria-hidden="true"></i>
                     </a>
                     <a href="mailto:chpaxson@berkeley.edu">
-                        <i class="contactIcons fas fa-envelope" aria-hidden="true"></i>
+                        <i class="contactIcons fas fa-envelope" id="email" aria-hidden="true"></i>
                     </a>
                     <a href="https://github.com/molecules1">
-                        <i class="contactIcons fab fa-github" aria-hidden="true"></i>
+                        <i class="contactIcons fab fa-github" id="github" aria-hidden="true"></i>
                     </a>
                     <a href="https://www.reddit.com/user/_molecules">
-                        <i class="contactIcons fab fa-reddit" aria-hidden="true"></i>
+                        <i class="contactIcons fab fa-reddit" id="reddit" aria-hidden="true"></i>
                     </a>
                     <a href="https://www.youtube.com/channel/UCifYwaTzzs6sm_tgiWigJSA">
-                        <i class="contactIcons fab fa-youtube" aria-hidden="true"></i>
+                        <i class="contactIcons fab fa-youtube" id="youtube" aria-hidden="true"></i>
                     </a>
                 </div>
             </div>
         </div>
     </div>
     <script src="scripts/main.js"></script>
+    <script src="scripts/darkMode.js"></script>
+    <script src="scripts/blockHorizontalScroll.js"></script>
 </body>
 
 </html>

@@ -1,33 +1,35 @@
-var scrollEventHandler = function () {
-    window.scroll(0, window.pageYOffset)
+var weatherErrorOut = document.getElementById("weatherError");
+
+function getLocation() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(showPosition, showError);
+    }
 }
 
-window.addEventListener("scroll", scrollEventHandler, false);
+function showPosition(position) {
+    x.innerHTML = "Latitude: " + position.coords.latitude +
+        "<br>Longitude: " + position.coords.longitude;
+}
 
-let mode = localStorage.getItem("theme");
-function toggleMode() {
-    if (mode === "dark") { // disable dark
-        document.body.style.setProperty("--bg", "#FFFFFF");
-        document.body.style.setProperty("--bg-accent", "#F9F9F9");
-        document.body.style.setProperty("--text", "#000000");
-        document.body.style.setProperty("--accent", "#ffbf00");
-        document.body.style.setProperty("--link-text", "#0000ff");
-        document.body.style.setProperty("--icon", "#000000");
-        mode = "light";
-        localStorage.setItem("theme", "light");
-    } else if (mode === "light") { // enable dark
-        document.body.style.setProperty("--bg", "#000000");
-        document.body.style.setProperty("--bg-accent", "#101010");
-        document.body.style.setProperty("--text", "#ffffff");
-        document.body.style.setProperty("--accent", "#ffbf00");
-        document.body.style.setProperty("--link-text", "#0000ff");
-        document.body.style.setProperty("--icon", "#ffffff");
-        mode = "dark";
-        localStorage.setItem("theme", "dark");
-    } else {
-        mode = "dark";
-        localStorage.setItem("theme", "dark");
-        toggleMode();
+function showError(error) {
+    switch (error.code) {
+        case error.PERMISSION_DENIED:
+            message = "User denied the request for Geolocation."
+            break;
+        case error.POSITION_UNAVAILABLE:
+            message = "Location information is unavailable."
+            break;
+        case error.TIMEOUT:
+            message = "The request to get user location timed out."
+            break;
+        case error.UNKNOWN_ERROR:
+            message = "An unknown error occurred."
+            break;
     }
-    mode = localStorage.getItem("theme");
+    weatherErrorOut.innerHTML = message;
+    weatherErrorOut.style.setProperty("display", "");
+}
+
+function weatherMenu() {
+
 }
