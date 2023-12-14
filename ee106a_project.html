@@ -65,6 +65,7 @@
                     <li> A ENA switch to toggle individual motors </li>
                     <li> A XT-60 connector for power to stepper drivers. (this connector has a 60A rating and we will draw at most 1A at 24V) </li>
                 </ul>
+                <p> The X, Y, and all three revolute axes are driven by TB6600 stepper drivers, which were perfect for our application since they can supply high current and were quite cheap.</p>
             </div>
             <div class="subsection" id="software-design"> 
                 <h3> Software </h3>
@@ -153,8 +154,32 @@
                 <div id="head_gui_plot"></div>
                 <i class="caption"> Point cloud data shown with Plotly.js instead of Matplotlib, which we use with ROS. </i>
                 <h4> Path Planner </h4>
-                <h4> STM32 Interface </h4>
+                <p>The path planner waits for a target point and normal vector from the Head GUI node, and when it gets a target, it transforms the point and normal vector to the robot frame using the OptiTrack data.
+                </p>
+                <p>It takes this target position and calculates a corresponding position on a "safety sphere" that is larger than the head, and sends both of these positions to MoveIt for inverse kinematics.</p>
+                <img src="ee106a_project_assets/images/moveit.png" alt="Head and safety sphere" class="picture center" style="border-radius: 5px;">
+                <i class="caption"> Robot shown about the head point cloud with the safety sphere in MoveIt</i>
+                <p>With the returned joint positions, it sends commands through the STM32 Interface to the robot to first move to a home position on the correct side of the head, before plunging into the position on the "safety sphere".</p>
+                <p>At this point, it switches to "critical" mode, where the robot will move much slower, and plunge towards the head while taking continuously checking the force from the F/T sensor.  When it reaches a threshold, the robot stops and backs up slightly.  At this point, TMS could be conducted on the patient.</p>
+                <p>Finally, the planner executes similar steps in reverse to safely retract from the head and wait for the next target point.</p>
                 <h4> STM32 Firmware </h4>
+                <p>The firmware receives serial commands containing the motor positions each joint should move to. </p>
+                <p> The motors are controlled using the AccelStepper library, which allows us to send either a position or velocity command to each motor.  This made implementing both open-loop control and closed-loop PID control much easier. </p>
+                <p> There are then two speed states: "standard" and "critical".  Standard mode is used to move and position far away from the head, and while approaching the head we use the critical mode to move much slower and listen for a stop command from serial. </p>
+                <h4> STM32 Interface </h4>
+                <p> The STM32 interface node takes messages from the data from the path planner and sends it over serial to the STM32 for execution.  It also takes the encoder readings from the STM32 and sends them to RViz to allow the robot model to update its position in real-time. </p>
+                <h4> OptiTrack </h4>
+                <p> We reused the OptiTrack setup that our lab already had, but we had to redo the calibration and learn the ins and outs of the system.  It consists of 8 IR cameras with IR emitters that are connected over USB to a desktop PC running an application called <a href="https://optitrack.com/software/motive/">Motive</a>. </p>
+                <img src="ee106a_project_assets/images/optitrack_cameras.jpg" alt="Mounted OptiTrack cameras" class="picture center">
+                <p> Motive filters the images from these cameras to isolate the IR reflective tracking points, and uses two-view geometry to locate them in 3D space.  A set of at least 3 points can be combined into a "trackable", which allows it to calculate a 3D pose of the object.</p>
+                <div class="side-by-side">
+                    <img src="ee106a_project_assets/images/motive_trackables.jpg" alt="Motive tracking objects" class="picture side-by-side-images">
+                    <img src="ee106a_project_assets/images/rviz_trackables.jpg" alt="RViz tracking objects" class="picture side-by-side-images">
+                </div>
+                <p> Our Motive license is from 2011, and it would cost at least $1000 to update.  We had a lot of issues calibrating the cameras, which could possibly have been solved with a newer version of the software that continuously refines the calibration as the system is used.  Even with the issues, though, we were able to get decent tracking data sent to ROS. </p>
+                <p> However, even if we updated the software, Motive is only compatible with Windows.  This meant that, to be compatible with all our ROS software, we had to use a separate Ubuntu computer for ROS and a Windows computer for Motive, using the Virtual Reality Peripheral Network (VRPN) interface to transfer the tracking data over a local network. </p>
+                <img src="ee106a_project_assets/images/optitrack_system.png" alt="OptiTrack block diagram" class="picture center">
+                <i class="caption">The blue box on the right represents a USB hub, connecting the cameras to the Motive PC, and then uses VRPN to send data through a LAN to ROS.</i>
             </div>
         </div>
         <div class="section", id="results"> 
@@ -195,17 +220,17 @@
                     </div>
                 </div>
                 <div class="team-member">
-                    <img src="ee106a_project_assets/images/team/naichen_zhao.jpeg" alt="Naichen Zhao" class="team-picture">
+                    <img src="ee106a_project_assets/images/team/naichen_zhao.jpg" alt="Naichen Zhao" class="team-picture">
                     <div class="team-text">
                         <div class="team-name"> <b>Naichen Zhao</b> - EECS/MechE </div>
-                        <div class="team-desc"> EECS and Mechanical Engineering Major, general experience across software, mechanical, and electrical engineering </div>
+                        <div class="team-desc"> EECS and Mechanical Engineering Major. I am very good at breaking robots and burning motor controllers </div>
                     </div>
                 </div>
                 <div class="team-member">
-                    <img src="ee106a_project_assets/images/team/wesley_jiang.jpeg" alt="Wesley Jiang" class="team-picture">
+                    <img src="ee106a_project_assets/images/team/wesley_jiang.jpg" alt="Wesley Jiang" class="team-picture">
                     <div class="team-text">
                         <div class="team-name"> <b>Wesley Jiang</b> - EECS </div>
-                        <div class="team-desc"> EECS major, experienced with coding and debugging electronics </div>
+                        <div class="team-desc"> Hi! This was my first time ever attempting anything in robotics. In the past, I've taken analog/digital/software courses here at Cal. On the side, I like to try to fix up old broken tech. </div>
                     </div>
                 </div>
                 <div class="team-member">
@@ -219,7 +244,7 @@
                     <img src="ee106a_project_assets/images/team/charles_paxson_photo.jpg" alt="Charles Paxson" class="team-picture">
                     <div class="team-text">
                         <div class="team-name"> <b>Charles Paxson</b> - MechE </div>
-                        <div class="team-desc"> Mechanical Engineering major and EECS minor, with six years of experience in FIRST competitive robotics.  Well-versed with CAD, 3D printing, and basic electronics. </div>
+                        <div class="team-desc"> Mechanical Engineering major and EECS minor, with six years of experience in FIRST competitive robotics.  Well-versed with CAD, 3D printing, and basic electronics.</div>
                     </div>
                 </div>
             </div>
