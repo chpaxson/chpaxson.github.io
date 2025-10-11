@@ -59,4 +59,9 @@ That's why I chose the DRV8251A motor drivers, even though most NEMA17 motors ar
 \r
 ## Challenges and Lessons Learned\r
 - The VMOT → 5V LDO LDO regulator was undersized, since I didn't realize they dissipate power proportional to their voltage drop.  Thus at 24V input, I could not power the two NeoPixel indicator LEDs I added without USB power supplementing the LDO.\r
+\r
+\r
+## Links\r
+- [Final project report](https://typst.app/project/rrGR7ovRXIC0UweLtR1TUi)\r
+- [GitHub repository](https://github.com/chpaxson/Echo-Telepresence)\r
 `;export{e as default};
