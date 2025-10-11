@@ -6,48 +6,69 @@ import { RouterLink } from 'vue-router'
   <main class="home">
     <div class="hero">
       <div class="container">
-        <h1 class="title">Welcome to My Portfolio</h1>
-        <p class="subtitle">
-          Exploring the intersection of technology, design, and innovation.
-        </p>
-        <div class="cta-buttons">
-          <RouterLink to="/projects" class="btn btn-primary">
-            View Projects
-          </RouterLink>
-          <RouterLink to="/resume" class="btn btn-secondary">
-            View Resume
-          </RouterLink>
+        <div class="hero-content">
+          <img src="/assets/images/headshot.jpg" alt="Headshot" class="headshot" />
+          
+          <div class="hero-text">
+            <h1 class="title">Hi! I'm Charles Paxson!</h1>
+            <p class="subtitle">
+              I'm graduating with my M.S. in Mechanical Engineering soon!
+            </p>
+            
+            <div class="cta-buttons">
+              <RouterLink to="/projects" class="btn btn-primary">
+                View Projects
+              </RouterLink>
+              <RouterLink to="/resume" class="btn btn-secondary">
+                View Resume
+              </RouterLink>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    
-    <section class="intro">
-      <div class="container">
-        <h2>About Me</h2>
-        <p>
-          I'm passionate about building innovative solutions and sharing my journey through this portfolio.
-          Here you'll find a collection of my projects, experiences, and technical explorations.
-        </p>
-      </div>
-    </section>
   </main>
 </template>
 
 <style scoped>
 .home {
-  min-height: calc(100vh - 100px);
+  min-height: auto;
 }
 
 .hero {
   padding: 4rem 2rem;
-  text-align: center;
   background: linear-gradient(135deg, var(--color-background) 0%, var(--color-background-soft) 100%);
   border-bottom: 1px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  min-height: auto;
 }
 
 .container {
-  max-width: 900px;
+  max-width: 1100px;
   margin: 0 auto;
+  width: 100%;
+}
+
+.hero-content {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+}
+
+.headshot {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+  border: 4px solid var(--color-background);
+}
+
+.hero-text {
+  flex: 1;
+  text-align: left;
 }
 
 .title {
@@ -70,7 +91,6 @@ import { RouterLink } from 'vue-router'
 .cta-buttons {
   display: flex;
   gap: 1rem;
-  justify-content: center;
   flex-wrap: wrap;
 }
 
@@ -107,26 +127,25 @@ import { RouterLink } from 'vue-router'
   transform: translateY(-2px);
 }
 
-.intro {
-  padding: 4rem 2rem;
-}
-
-.intro h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-
-.intro p {
-  font-size: 1.2rem;
-  line-height: 1.8;
-  color: var(--color-text);
-  text-align: center;
-}
-
 @media (max-width: 768px) {
   .hero {
     padding: 3rem 1rem;
+    min-height: auto;
+  }
+  
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 2rem;
+  }
+  
+  .hero-text {
+    text-align: center;
+  }
+  
+  .headshot {
+    width: 180px;
+    height: 180px;
   }
   
   .title {
@@ -142,12 +161,8 @@ import { RouterLink } from 'vue-router'
     padding: 0.875rem 1.5rem;
   }
   
-  .intro h2 {
-    font-size: 2rem;
-  }
-  
-  .intro p {
-    font-size: 1.1rem;
+  .cta-buttons {
+    justify-content: center;
   }
 }
 </style>
