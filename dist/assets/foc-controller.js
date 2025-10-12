@@ -2,8 +2,7 @@ var e=`---\r
 title: FOC Stepper Motor Controller\r
 description: 6-layer RP2040 PCB with an MT6701 magnetic encoder and 2x DRV8251A motor drivers\r
 thumbnail: /assets/images/foc-controller/front.jpg\r
-date: 2024-06-20\r
-tags: [KiCad, PCB design, embedded systems]\r
+date: 2025-05-20\r
 ---\r
 \r
 # FOC Stepper Motor Controller\r

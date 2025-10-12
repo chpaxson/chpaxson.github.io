@@ -2,8 +2,7 @@ var e=`---\r
 title: FishSense\r
 description: Underwater handheld depth camera and processor enclosure for fish cataloguing\r
 thumbnail: /assets/images/fishsense/fishsense.png\r
-date: 2024-06-20\r
-tags: [web development, vue, typescript]\r
+date: 2022-08-01\r
 ---\r
 # FishSense\r
 \r
