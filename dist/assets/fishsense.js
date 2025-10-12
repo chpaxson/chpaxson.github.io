@@ -47,6 +47,11 @@ Finally, the enclosure has additional "rails" mounted inside to ensure that the 
 \r
 <!-- My design improved a lot of major aspects, but I also made a lot of small mistakes throughout the design process, and unfortunately, a few with the final design. There are a few bolts that were too long, and we came up with a few more features to implement. Some would be done on a new version of the module, and some can be applied to the current ones. Also, since I designed the assembly from the bottom up, with in-place relations and many, many external references, it is difficult to modify certain parts. I'm working on making all mechanical interfaces defined by sketch blocks. -->\r
 \r
+### Exploded View\r
+\r
+\r
+\r
+### Handles\r
 \r
 \r
 ## Links\r

@@ -7,6 +7,8 @@ date: 2025-05-20\r
 \r
 # FOC Stepper Motor Controller\r
 \r
+## Overview\r
+\r
 This was designed for my MECENG 235 project in Spring 2025 using KiCad.  It is a 6-layer PCB with:\r
 - RP2040 microcontroller (2-core ARM processor, 133MHz)\r
 - MT6701 14-bit magnetic encoder using I2C\r
@@ -19,6 +21,7 @@ This was designed for my MECENG 235 project in Spring 2025 using KiCad.  It is a
 <img src="/assets/images/foc-controller/pcb-iso.png" alt="Front layer" style="width: 100%; border-radius: 8px;" />\r
 \r
 \r
+## PCB Layers\r
 <div style="display: flex; gap: 1rem; flex-wrap: wrap;">\r
   <div style="flex: 1; min-width: 50px;">\r
     <p style="text-align: center; font-style: italic; margin-bottom: 5px;">Front layer</p>\r
@@ -49,6 +52,7 @@ This was designed for my MECENG 235 project in Spring 2025 using KiCad.  It is a
 </div>\r
 \r
 \r
+## Design Considerations\r
 I designed this PCB with more than just the ME135 project in mind, as it can, in theory, turn any NEMA17 stepper motor into a powerful servo motor.\r
 \r
 That's why I chose the DRV8251A motor drivers, even though most NEMA17 motors are rated at up to 2A per phase.  The DRV8251A can deliver up to 4.1A per phase, which allows for higher torque and better performance at the cost of more heat generation.\r
