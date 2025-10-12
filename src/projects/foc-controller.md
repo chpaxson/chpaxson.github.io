@@ -19,8 +19,6 @@ This was designed for my MECENG 235 project in Spring 2025 using KiCad.  It is a
 <img src="/assets/images/foc-controller/pcb-iso.png" alt="Front layer" style="width: 100%; border-radius: 8px;" />
 
 
-
-
 <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
   <div style="flex: 1; min-width: 50px;">
     <p style="text-align: center; font-style: italic; margin-bottom: 5px;">Front layer</p>

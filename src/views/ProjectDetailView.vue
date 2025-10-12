@@ -56,13 +56,13 @@ onMounted(async () => {
               {{ project.metadata.description }}
             </p>
             
-            <div v-if="project.metadata.date" class="date">
+            <!-- <div v-if="project.metadata.date" class="date">
               {{ new Date(project.metadata.date).toLocaleDateString('en-US', { 
                 year: 'numeric', 
                 month: 'long', 
                 day: 'numeric' 
               }) }}
-            </div>
+            </div> -->
             
             <div v-if="project.metadata.tags" class="tags">
               <span v-for="tag in project.metadata.tags" :key="tag" class="tag">
