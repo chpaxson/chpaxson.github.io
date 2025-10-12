@@ -8,7 +8,13 @@ const loading = ref(true)
 
 onMounted(async () => {
   try {
-    projects.value = await loadProjects()
+    const loadedProjects = await loadProjects()
+    // Sort by date, newest first (descending)
+    projects.value = loadedProjects.sort((a, b) => {
+      const dateA = a.metadata.date ? new Date(a.metadata.date).getTime() : 0
+      const dateB = b.metadata.date ? new Date(b.metadata.date).getTime() : 0
+      return dateB - dateA
+    })
   } catch (error) {
     console.error('Failed to load projects:', error)
   } finally {

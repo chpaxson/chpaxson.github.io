@@ -2,8 +2,7 @@
 title: FishSense
 description: Underwater handheld depth camera and processor enclosure for fish cataloguing
 thumbnail: /assets/images/fishsense/fishsense.png
-date: 2024-06-20
-tags: [web development, vue, typescript]
+date: 2022-08-01
 ---
 # FishSense
 

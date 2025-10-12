@@ -28,29 +28,29 @@ Graduating from UC Berkeley with
 **Hologic, Inc.** | *May 2023 - Aug 2025*
 - Identified and resolved a reliability issue in a new workflow for a sample-preparation instrument using data-driven testing.
 - Co-developed a hardware solution to address reliability issues in deployed Novodiag instruments.
-- Improved throughput and reliability by refining a key manufacturing step for a consumable cartridge and designing an automated fixture.
-- Independently designed and prototyped an automated reagent-preparation system for the Panther molecular diagnostics platform.
+- Boosted manufacturing throughput and reliability by refining a key step for a consumable cartridge, and designing a custom automated fixture.
+- Independently designed and prototyped an automated reagent-preparation system for the Panther molecular diagnostics platform to demonstrate feasibility.
 - Completed three consecutive summer internships, continuing part-time remote work during academic terms.
 
 ### Student Researcher
 **Biomimetic Millisystems Laboratory** | *Jan 2023 - Dec 2025*
 - Designed components of a 7-axis non-ferromagnetic robot arm for transcranial magnetic stimulation (TMS) experiments inside an MRI scanner.
-- Supported the development of a compact series-elastic actuator (SEA) with an integrated planetary or cycloidal gearbox, enabling active compliance in a non-backdrivable ultrasonic motor ([arXiv:2406.07670](https://doi.org/10.48550/arXiv.2406.07670)).
-- Assisted in fabrication and assembly of a a full 7-axis arm prototype.
-- Designed a 3-axis parallel robot arm to test the feasibility of closed-loop MRI-based position control using a miniature marker coil ([archive.ismrm.org/2025/3310.html](https://archive.ismrm.org/2025/3310.html)).
-- Redesigned and fabricated an improved elbow joint module with enhanced strength and reduced backlash.
+- Contributed to development and testing of a compact series-elastic actuator (SEA) with an integrated planetary or cycloidal gearbox, enabling active compliance in a non-backdrivable ultrasonic motor (#link("https://doi.org/10.48550/arXiv.2406.07670")[arXiv:2406.07670]).
+- Assisted in fabrication and assembly of a full 7-axis arm prototype.
+- Designed a 3-axis parallel robot arm to test the feasibility of closed-loop MRI-based position control using a miniature marker coil (#link("https://archive.ismrm.org/2025/3310.html")[archive.ismrm.org/2025/3310.html]).
+- Redesigning and fabricating an improved elbow joint module with enhanced strength and reduced backlash.
 - Designed a 3D-printed low-cost cable-actuated micromanipulator for Berkeley's SWARM Lab.
 
 ### HOPE DeCal Instructor
 **UC Berkeley** | *Aug 2024 - Dec 2025*
-- Lectured and helped revise curriculum for UC Berkeley's Hands-On PCB Engineering (HOPE) student-run DeCal course.
-- Mentored student teams through schematic design, layout, fabrication, assembly, and bring-up of production-ready PCBs.
+- Delivering lectures and helping revise curriculum for UC Berkeley's Hands-On PCB Engineering (HOPE) student-run DeCal course.
+- Mentoring student teams through schematic design, layout, fabrication, assembly, and bring-up of production-ready PCBs.
 
 ### Mechanical Engineer
 **Triton Robosub** | *Aug 2020 - Jul 2022*
-- Designed a waterproof camera module for the Fishsense project to contain a depth camera and processor to assist in cataloguing fish with AI .
-  - Updated the initial prototype described here: ([ieeexplore.ieee.org/document/9705929](https://ieeexplore.ieee.org/document/9705929))
-- Sourced components, developed a bill of materials, and assembled prototypes for field testing and preliminary research.
+- Designed a new waterproof camera module for the FishSense project to contain a depth camera and processor to assist in cataloguing fish with AI.
+  - Updated the initial prototype described here: #link("https://ieeexplore.ieee.org/document/9705929")[ieeexplore.ieee.org/document/9705929]
+- Led the design update, modeling, sourcing components, and fabricating the new prototype for field testing and preliminary research.  
 
 ### Teacher's Assistant
 **Art of Problem Solving** | *Jul 2021 - Jul 2022*

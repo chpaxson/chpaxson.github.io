@@ -2,8 +2,7 @@
 title: KiwiBot
 description: 3-wheeled omnidirectional robot with computer vision and autonomous navigation.
 thumbnail: /assets/images/kiwibot/taildragger.jpg
-date: 2024-06-20
-tags: [KiCad, PCB design, embedded systems]
+date: 2023-12-20
 ---
 
 # Overview
