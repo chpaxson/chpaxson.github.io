@@ -18,6 +18,8 @@ This project demonstrates advanced robotic arm design with 3D-printed components
 The arm has 1 planetary gear reduction and 5 cycloidal drives (3 distinct designs).  It has a total reach of about 1 meter and a theoretical payload capacity of 5kg at full extension.
 
 
+
+
 ## Technical Details
 <div style="display: flex; gap: 0rem; flex-wrap: wrap; justify-content: center;">
   <img src="/assets/images/lyra/cad-iso.png" alt="Isometric view of CAD" style="width: 80%; min-width: 300px; border-radius: 8px;" />
@@ -43,6 +45,7 @@ Joints 4, 5, and 6 used the same 9:1 2-disk cycloidal drive design, that is ever
   <p style="text-align: center; font-style: italic; margin-top: 5px;">Joint 2 cycloidal reducer - center gray component is the input, the 6 rods immediately around it capture the output rotation</p>
 </div>
 
+All of the drives are designed with ABS  cycloidal disks, with steel pins for the housing pins and output pins to minimize friction.
 
 
 
