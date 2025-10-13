@@ -9,16 +9,15 @@ var e=`<div style="display: flex; justify-content: space-between; align-items: f
   </div>\r
 </div>\r
 \r
-**Mechanical Engineer | Robotics | Mechatronics | Automation | Maker**\r
+**Mechanical Engineer | Robotics | Mechatronics | Automation**\r
 \r
 📧 chpaxson@berkeley.edu | 🌐 github.com/chpaxson | 📍 San Diego, CA\r
-\r
 \r
 ---\r
 \r
 ## Summary\r
 \r
-Graduating from UC Berkeley with \r
+I'm graduating in December 2025 with a M.S. in Mechanical Engineering from UC Berkeley, specializing in robotics and mechatronics.  I have experience in mechanical design, prototyping, embedded systems, and automation.  I'm passionate about building things, learning new skills, and solving challenging problems!\r
 \r
 ---\r
 \r
@@ -35,9 +34,9 @@ Graduating from UC Berkeley with \r
 ### Student Researcher\r
 **Biomimetic Millisystems Laboratory** | *Jan 2023 - Dec 2025*\r
 - Designed components of a 7-axis non-ferromagnetic robot arm for transcranial magnetic stimulation (TMS) experiments inside an MRI scanner.\r
-- Contributed to development and testing of a compact series-elastic actuator (SEA) with an integrated planetary or cycloidal gearbox, enabling active compliance in a non-backdrivable ultrasonic motor (#link("https://doi.org/10.48550/arXiv.2406.07670")[arXiv:2406.07670]).\r
+- Contributed to development and testing of a compact series-elastic actuator (SEA) with an integrated planetary or cycloidal gearbox, enabling active compliance in a non-backdrivable ultrasonic motor ([arXiv:2406.07670](https://doi.org/10.48550/arXiv.2406.07670)).\r
 - Assisted in fabrication and assembly of a full 7-axis arm prototype.\r
-- Designed a 3-axis parallel robot arm to test the feasibility of closed-loop MRI-based position control using a miniature marker coil (#link("https://archive.ismrm.org/2025/3310.html")[archive.ismrm.org/2025/3310.html]).\r
+- Designed a 3-axis parallel robot arm to test the feasibility of closed-loop MRI-based position control using a miniature marker coil ([archive.ismrm.org/2025/3310.html](https://archive.ismrm.org/2025/3310.html)).\r
 - Redesigning and fabricating an improved elbow joint module with enhanced strength and reduced backlash.\r
 - Designed a 3D-printed low-cost cable-actuated micromanipulator for Berkeley's SWARM Lab.\r
 \r
@@ -49,7 +48,7 @@ Graduating from UC Berkeley with \r
 ### Mechanical Engineer\r
 **Triton Robosub** | *Aug 2020 - Jul 2022*\r
 - Designed a new waterproof camera module for the FishSense project to contain a depth camera and processor to assist in cataloguing fish with AI.\r
-  - Updated the initial prototype described here: #link("https://ieeexplore.ieee.org/document/9705929")[ieeexplore.ieee.org/document/9705929]\r
+  - Updated the initial prototype described here: [ieeexplore.ieee.org/document/9705929](https://ieeexplore.ieee.org/document/9705929)\r
 - Led the design update, modeling, sourcing components, and fabricating the new prototype for field testing and preliminary research.  \r
 \r
 ### Teacher's Assistant\r
@@ -57,6 +56,14 @@ Graduating from UC Berkeley with \r
 - Helped teach 3rd grade and 7-9th grade students in summer math classes.\r
 - Worked one-on-one with students in tutoring sessions.\r
 \r
+### FIRST Tech Challenge Participant\r
+**Cherry Pi Robotics** | *Sep 2016 - Feb 2019*\r
+- Starting in 6th grade, designed and built mechanical systems for a competition robot as part of a private middle school team\r
+- Led the design and fabrication of our robot every year, including CAD modeling, prototyping, and machining\r
+- Tested and iteratively tuned autonomous software for speed and reliability\r
+- Qualified for the 2018 World Championships in Houston, TX.\r
+- Mentored younger team members in design and fabrication techniques.\r
+- Gained experience in teamwork, problem-solving, and time management.\r
 ---\r
 \r
 ## Education\r
@@ -67,60 +74,35 @@ Graduating from UC Berkeley with \r
 \r
 #### Bachelor of Science in Mechanical Engineering\r
 **University of California, Berkeley** | *Aug 2022 - Dec 2024*\r
-- Relevant courses:\r
-- Robotics\r
-- \r
 \r
 ---\r
 \r
 ## Skills\r
 \r
-**Mechanical Design**: SOLIDWORKS (CSWP), Fusion 360, Onshape, DFM\r
+**Mechanical Design**: SOLIDWORKS (CSWP, CSWP-SU, CSWP-SM certifications), Fusion 360, Onshape, DFM\r
 \r
 **Analysis**: SOLIDWORKS Simulation, ANSYS, COMSOL, MATLAB\r
 \r
 **Prototyping**: 3D printing, basic machining, laser cutting\r
 \r
-**Electronics**: PCB design (KiCad, Altium), embedded systems\r
+**Electronics**: PCB design (KiCad, Altium), embedded systems (ESP-IDF, PlatformIO, Arduino)\r
 \r
-**Programming**: Python, C++, Java, MATLAB, JavaScript\r
+**Programming**: Python, C++, Java, MATLAB, JavaScript, HTML/CSS\r
 \r
-**Documentation**: Microsoft Office, Typst, #latex\r
-\r
----\r
-\r
-<!-- ## Projects\r
-\r
-### Lyra - 6-Axis Robot Arm\r
-*Personal Project | 2024*\r
-\r
-A largely 3D-printed robot arm with impressive reach and payload capacity. Features custom control software and inverse kinematics solver.\r
-\r
-<!-- Example of inserting an image in markdown -->\r
-<!-- Place your image in public/assets/images/ folder\r
-![Lyra Robot Arm](/assets/images/v2-spinning.gif)\r
-\r
-### FishSense IoT Device\r
-*Team Project | 2023*\r
-\r
-IoT device for monitoring aquarium conditions with real-time alerts and data visualization.\r
-\r
-![FishSense Device](/assets/images/fishsense.png)\r
+**Documentation**: Microsoft Office, Typst, LaTeX\r
 \r
 ---\r
 \r
-## Publications & Talks\r
+## Volunteer Experience\r
+### FIRST Robotics Mentor\r
+- Mentored a local FTC team in mechanical design and fabrication techniques.\r
+- Guided students through the design, prototyping, and manufacturing process, including teaching the basics of CAD through Onshape.\r
+- Mentored a pair of FLL teams in basics of engineering design and the iterative process, including brainstorming, prototyping, testing, and refining ideas.\r
+- Taught lessons on basic mechanical design concepts such as simple machines, gears, and linkages.\r
 \r
-- "Building Affordable Robotic Arms" - Maker Faire 2024\r
-- "3D Printing for Robotics" - Local Meetup Talk 2023\r
 \r
 ---\r
 \r
-## Interests\r
+## Projects\r
 \r
-When I'm not coding, you can find me:\r
-- 🔧 Tinkering with robotics projects\r
-- 🎨 3D modeling and printing\r
-- 📷 Photography\r
-- 🚴 Cycling\r
- -->`;export{e as default};
+See more details about my projects on my [Projects Page](/projects).`;export{e as default};

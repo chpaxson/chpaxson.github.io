@@ -62,5 +62,5 @@ All of the outputs were wired into the center puck of the board, which mated wit
   <img src="/assets/images/lyra-toolhead/schematic/Toolhead Board-CAN IO.svg" alt="CAN Controller Schematic" style="width: 100%; border-radius: 0px;" />\r
 </div>\r
 \r
-## Links\r
+# Links\r
 - [Project Repository](https://github.com/chpaxson/lyra/tree/main/Hardware/Electronics/Custom%20PCBs/Toolhead%20Board)`;export{e as default};

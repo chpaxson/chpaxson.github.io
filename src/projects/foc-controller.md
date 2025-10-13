@@ -68,6 +68,6 @@ That's why I chose the DRV8251A motor drivers, even though most NEMA17 motors ar
 - There was an error in the MT6701 schematic that put it in quadrature output mode instead of I2C mode, which took us hours to debug.  We assmembled 5 boards, and 4 of them just refused to output any data over I2C.  The last board worked perfectly, because there happened to be a bad solder joint on the MODE pin that left it floating, defaulting to I2C mode.  Because the one board worked fine, we ruled out a schematic issue early-on and wasted a lot of time debugging the I2C bus, including swapping sensors, the RP2040 itself, oscillator load capacitors, and more - before realizing we just had to lift one pin on the sensor!
 
 
-## Links
+# Links
 - [Final project report](https://typst.app/project/rrGR7ovRXIC0UweLtR1TUi)
 - [GitHub repository](https://github.com/chpaxson/Echo-Telepresence)

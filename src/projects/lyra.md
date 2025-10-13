@@ -17,7 +17,10 @@ The arm has 1 planetary gear reduction and 5 cycloidal drives (3 distinct design
 
 The name comes from the Lyra constellation, with 6 main stars representing the 6 joints of the arm.
 
-
+<div style="display: block; text-align: center;">
+  <img src="/assets/images/lyra/group-photo.jpg" alt="Group photo" style="width: 65%; min-width: 300px; border-radius: 8px;" />
+  <p style="text-align: center; font-style: italic; margin-top: 5px;">Angel, David, Daniel and I (left-to-right) with the arm at the final project showcase</p>
+</div>
 
 ## Technical Details
 <div style="display: flex; gap: 1rem;">
