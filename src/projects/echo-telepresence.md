@@ -73,6 +73,17 @@ The robot itself is extremely simple, with a small belt reduction between each m
   <p style="text-align: center; font-style: italic; margin-top: 5px;">Final robot design</p>
 </div>
 
+The joints at the base contain a large thrust bearing and a radial bearing with a bolt through the center, creating a structure that puts the thrust bearing in compression and the radial bearing in tension, ensuring the arm can take a large moment without binding.
+<div style="display: block; text-align: center;">
+  <img src="/assets/images/echo/base-joints.png" alt="Base Joints" style="width: 100%; border-radius: 8px;" />
+  <p style="text-align: center; font-style: italic; margin-top: 5px;">Base Joints</p>
+</div>
+
+
+
+
+## Open Sauce 2025
+
 One of my group members, Ishaan Gupta, who mainly focused on the FOC motor controller firmware, added a pen holder to the end effector and presented the robot at Open Sauce 2025.
 
 I modified the GUI to allow control through keyboard input, so people could draw with the robot.
