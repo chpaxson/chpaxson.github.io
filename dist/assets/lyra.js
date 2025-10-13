@@ -11,7 +11,7 @@ A largely 3D-printed 6-axis robot arm with a 1-meter reach and large payload.\r
 \r
 ## Overview\r
 \r
-I built this for my ME102B class at Berkeley in Spring 2024, with Angel Garnica, David Gonzalez, and Daniel Morales.\r
+I built this for my ME102B class at Berkeley in Spring 2024, with Angel Garnica, David Scott Gonzalez, and Daniel Morales.\r
 \r
 The arm has 1 planetary gear reduction and 5 cycloidal drives (3 distinct designs).  It has a total reach of about 1 meter and a theoretical payload capacity of 5kg at full extension.\r
 \r
