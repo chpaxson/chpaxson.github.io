@@ -15,7 +15,7 @@ The prompt for this project was to develop a real-time microprocessor-based cont
 
 We then settled on the parallel SCARA kinematics, as it only requires two motors per arm, and has a decent workspace for manipulation.
 
-My main contributions to the project were the FOC motor controller PCB design, the main controller, the kinematic modeling, and the GUI software.
+I designed the motor controller PCBs, the robot itself, the main controller hardware and firmware, and the GUI software.  Ishaan focused on the FOC motor controller firmware (based on SimpleFOC, ported to the Raspberry Pi Pico SDK).  David and Luz worked on previous iterations of the robot design, fabrication, and testing.
 
 ## FOC Motor Controller
 
