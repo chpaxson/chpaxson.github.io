@@ -67,6 +67,10 @@ That's why I chose the DRV8251A motor drivers, even though most NEMA17 motors ar
 - The VMOT → 5V LDO LDO regulator was undersized, since I didn't realize they dissipate power proportional to their voltage drop.  Thus at 24V input, I could not power the two NeoPixel indicator LEDs I added without USB power supplementing the LDO.  It was still able to run at 24V without the LEDs, but the next revision will have a switching regulator instead.
 - There was an error in the MT6701 schematic that put it in quadrature output mode instead of I2C mode, which took us hours to debug.  We assmembled 5 boards, and 4 of them just refused to output any data over I2C.  The last board worked perfectly, because there happened to be a bad solder joint on the MODE pin that left it floating, defaulting to I2C mode.  Because the one board worked fine, we ruled out a schematic issue early-on and wasted a lot of time debugging the I2C bus, including swapping sensors, the RP2040 itself, oscillator load capacitors, and more - before realizing we just had to lift one pin on the sensor!
 
+<div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
+  <img src="/assets/images/echo-foc-controller/bad-solder-joint.jpg" alt="Bad Solder Joint" style="width: 50%; border-radius: 8px;" />
+</div>
+
 
 # Links
 - [Final project report](https://typst.app/project/rrGR7ovRXIC0UweLtR1TUi)
