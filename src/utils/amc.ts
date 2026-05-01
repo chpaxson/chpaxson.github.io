@@ -114,6 +114,46 @@ function splitAnswers(raw: string): string[] {
   return results
 }
 
+export interface AMCProblemMeta {
+  id: string
+  metadata: AMCMetadata
+}
+
+/** Return lightweight metadata for all AMC problems (no solution parsing). */
+export async function loadAllAMCProblemsMeta(): Promise<AMCProblemMeta[]> {
+  const modules = import.meta.glob<string>('@/amc_problems/**/*.md', {
+    query: '?raw',
+    import: 'default',
+  })
+  const metas: AMCProblemMeta[] = []
+  for (const path in modules) {
+    const loader = modules[path]
+    if (!loader) continue
+    const raw = await loader()
+    const id = path.replace(/^.*\/amc_problems\//, '').replace(/\.md$/, '').replace(/\//g, '_')
+    const problem = parseAMCProblem(id, raw)
+    metas.push({ id, metadata: problem.metadata })
+  }
+  return metas
+}
+
+/** Determine the AMC category (AMC8, AMC10, AMC12) from a contest string. */
+export function amcCategory(contest: string): 'AMC8' | 'AMC10' | 'AMC12' | 'Other' {
+  if (/AMC\s*8/i.test(contest)) return 'AMC8'
+  if (/AMC\s*10/i.test(contest)) return 'AMC10'
+  if (/AMC\s*12/i.test(contest)) return 'AMC12'
+  return 'Other'
+}
+
+/** Sort comparator for AMC problems: by category order, then year, then problem number. */
+export function amcSortKey(meta: AMCProblemMeta): [number, string, number, number] {
+  const catOrder: Record<string, number> = { AMC8: 0, AMC10: 1, AMC12: 2, Other: 3 }
+  const cat = amcCategory(meta.metadata.contest)
+  const yearMatch = meta.metadata.contest.match(/(\d{4})/)
+  const year = yearMatch?.[1] ? parseInt(yearMatch[1]) : 0
+  return [catOrder[cat] ?? 3, meta.metadata.contest, year, meta.metadata.problemNumber]
+}
+
 /** Dynamically load all AMC problem markdown files under src/amc_problems/**\/*.md */
 export async function loadAllAMCProblems(): Promise<AMCProblem[]> {
   const modules = import.meta.glob<string>('@/amc_problems/**/*.md', {

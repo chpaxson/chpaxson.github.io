@@ -33,6 +33,11 @@ const router = createRouter({
       component: () => import("../views/AboutView.vue"),
     },
     {
+      path: "/amc",
+      name: "amc-home",
+      component: () => import("../views/AMCHomeView.vue"),
+    },
+    {
       path: "/amc/:id",
       name: "amc-problem",
       component: () => import("../views/AMCProblemPage.vue"),

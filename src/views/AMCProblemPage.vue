@@ -1,8 +1,14 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
-import { useRoute } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import { marked } from 'marked'
-import { loadAMCProblem, type AMCProblem } from '@/utils/amc'
+import {
+  loadAMCProblem,
+  loadAllAMCProblemsMeta,
+  amcSortKey,
+  type AMCProblem,
+  type AMCProblemMeta,
+} from '@/utils/amc'
 
 declare const MathJax: {
   typesetPromise: (nodes?: HTMLElement[]) => Promise<void>
@@ -10,12 +16,26 @@ declare const MathJax: {
 }
 
 const route = useRoute()
+const router = useRouter()
 const problem = ref<AMCProblem | null>(null)
 const loading = ref(true)
 const error = ref<string | null>(null)
 
-const selectedAnswer = ref<number | null>(null) // 1-based, null = not yet chosen
+const selectedAnswer = ref<number | null>(null)
 const solutionOpen = ref(false)
+
+// All problems sorted for prev/next navigation
+const allMetas = ref<AMCProblemMeta[]>([])
+
+const currentIndex = computed(() =>
+  allMetas.value.findIndex((m) => m.id === (route.params.id as string))
+)
+const prevMeta = computed(() =>
+  currentIndex.value > 0 ? allMetas.value[currentIndex.value - 1] : null
+)
+const nextMeta = computed(() =>
+  currentIndex.value < allMetas.value.length - 1 ? allMetas.value[currentIndex.value + 1] : null
+)
 
 const LABELS = ['(A)', '(B)', '(C)', '(D)', '(E)']
 
@@ -89,9 +109,21 @@ async function loadProblem(id: string) {
   }
 }
 
-onMounted(() => {
+onMounted(async () => {
   loadProblem(route.params.id as string)
   window.addEventListener('message', onIframeMessage)
+  const metas = await loadAllAMCProblemsMeta()
+  allMetas.value = [...metas].sort((a, b) => {
+    const ka = amcSortKey(a)
+    const kb = amcSortKey(b)
+    for (let i = 0; i < ka.length; i++) {
+      const ai = ka[i] as string | number
+      const bi = kb[i] as string | number
+      if (ai < bi) return -1
+      if (ai > bi) return 1
+    }
+    return 0
+  })
 })
 onUnmounted(() => window.removeEventListener('message', onIframeMessage))
 watch(() => route.params.id, (id) => id && loadProblem(id as string))
@@ -100,6 +132,27 @@ watch([selectedAnswer, solutionOpen], typeset)
 
 <template>
   <main class="amc-page" ref="pageRef">
+    <!-- Top navigation bar -->
+    <nav class="amc-topnav">
+      <router-link to="/amc" class="amc-nav-btn">← All Problems</router-link>
+      <div class="amc-nav-prevnext">
+        <router-link
+          v-if="prevMeta"
+          :to="`/amc/${prevMeta.id}`"
+          class="amc-nav-btn"
+          :title="`${prevMeta.metadata.contest} P${prevMeta.metadata.problemNumber}`"
+        >‹ Prev</router-link>
+        <span v-else class="amc-nav-btn amc-nav-disabled">‹ Prev</span>
+        <router-link
+          v-if="nextMeta"
+          :to="`/amc/${nextMeta.id}`"
+          class="amc-nav-btn"
+          :title="`${nextMeta.metadata.contest} P${nextMeta.metadata.problemNumber}`"
+        >Next ›</router-link>
+        <span v-else class="amc-nav-btn amc-nav-disabled">Next ›</span>
+      </div>
+    </nav>
+
     <div v-if="loading" class="amc-loading">Loading…</div>
     <div v-else-if="error" class="amc-error">{{ error }}</div>
 
@@ -166,6 +219,44 @@ watch([selectedAnswer, solutionOpen], typeset)
   padding: 0 1.5rem 3rem;
   font-family: inherit;
   line-height: 1.7;
+}
+
+/* Top navigation */
+.amc-topnav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--color-border, #ddd);
+}
+
+.amc-nav-prevnext {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.amc-nav-btn {
+  display: inline-block;
+  padding: 0.3rem 0.8rem;
+  border: 1.5px solid var(--color-border, #ccc);
+  border-radius: 6px;
+  font-size: 0.88rem;
+  color: var(--color-text, #333);
+  text-decoration: none;
+  background: var(--color-background-soft, #f9f9f9);
+  transition: background 0.18s, border-color 0.18s;
+  cursor: pointer;
+}
+
+.amc-nav-btn:hover:not(.amc-nav-disabled) {
+  background: var(--color-background-mute, #efefef);
+  border-color: #888;
+}
+
+.amc-nav-disabled {
+  opacity: 0.35;
+  cursor: default;
 }
 
 .amc-loading,

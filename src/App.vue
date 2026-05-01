@@ -1,11 +1,15 @@
 <script setup lang="ts">
-import { RouterView } from 'vue-router'
+import { computed } from 'vue'
+import { RouterView, useRoute } from 'vue-router'
 import NavigationBar from './components/NavigationBar.vue'
+
+const route = useRoute()
+const showNav = computed(() => !route.path.startsWith('/amc'))
 </script>
 
 <template>
   <div class="app-container">
-    <NavigationBar />
+    <NavigationBar v-if="showNav" />
     <main class="main-content">
       <RouterView />
     </main>
