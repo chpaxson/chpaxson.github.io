@@ -12,7 +12,7 @@ import { RouterLink } from 'vue-router'
           <div class="hero-text">
             <h1 class="title">Hi! I'm Charles Paxson!</h1>
             <p class="subtitle">
-              I'm graduating with my M.S. in Mechanical Engineering soon!
+              Mechanical Engineer at Element Biosciences
             </p>
             
             <div class="cta-buttons">

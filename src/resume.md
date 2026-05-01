@@ -23,6 +23,9 @@ I'm graduating in December 2025 with a M.S. in Mechanical Engineering from UC Be
 
 ## Experience
 
+### Mechanical Engineer
+**Element Biosciences** | *Jan 2026 - Present*
+
 ### R&D Engineering Intern
 **Hologic, Inc.** | *May 2023 - Aug 2025*
 - Identified and resolved a reliability issue in a new workflow for a sample-preparation instrument using data-driven testing.
