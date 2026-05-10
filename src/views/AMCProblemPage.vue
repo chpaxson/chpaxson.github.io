@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, watch, nextTick } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { marked } from 'marked'
+import { marked, type Tokens } from 'marked'
 import {
   loadAMCProblem,
   loadAllAMCProblemsMeta,
@@ -9,6 +9,17 @@ import {
   type AMCProblem,
   type AMCProblemMeta,
 } from '@/utils/amc'
+
+// typst-error fenced blocks (failed compilation at build time) — render a warning
+const typstErrorRenderer = {
+  code({ lang }: Tokens.Code): string | false {
+    if (lang === 'typst-error') {
+      return `<div class="amc-typst-error"><strong>Typst compilation failed</strong> — install the <a href="https://typst.app" target="_blank">Typst CLI</a> and restart the dev server.</div>`
+    }
+    return false
+  },
+}
+marked.use({ renderer: typstErrorRenderer })
 
 declare const MathJax: {
   typesetPromise: (nodes?: HTMLElement[]) => Promise<void>
@@ -58,6 +69,11 @@ const displayParts = computed((): DisplayPart[] => {
   return problem.value.solutionSegments.map((seg) => {
     if (seg.type === 'markdown') {
       return { kind: 'markdown' as const, html: marked.parse(seg.content) as string }
+    }
+    if (seg.type === 'typst-svg' || seg.type === 'typst-error') {
+      // These segment types were for inline SVG injection; with the image approach
+      // they don't appear in solution segments (only in problem markdown). Fallback:
+      return { kind: 'markdown' as const, html: '' }
     }
     return { kind: 'iframe' as const, srcdoc: seg.html, index: iframeIdx++ }
   })
@@ -392,5 +408,37 @@ watch([selectedAnswer, solutionOpen], typeset)
   width: 100%;
   border: none;
   transition: height 0.2s ease;
+}
+
+.amc-typst-figure {
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0;
+  margin: 0;
+}
+
+.amc-typst-figure :deep(img),
+.amc-typst-figure :deep(svg) {
+  max-width: 100%;
+  height: auto;
+}
+
+.amc-typst-error {
+  margin: 0.75rem 1.25rem;
+  padding: 0.75rem 1rem;
+  background: #fef2f2;
+  border: 1px solid #fca5a5;
+  border-radius: 6px;
+  font-size: 0.88rem;
+  color: #991b1b;
+}
+
+.amc-typst-error pre {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+  background: rgba(0,0,0,0.06);
+  border-radius: 4px;
+  padding: 0.5rem;
+  overflow-x: auto;
 }
 </style>

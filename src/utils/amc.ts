@@ -7,6 +7,8 @@ export interface AMCMetadata {
 export type SolutionSegment =
   | { type: 'markdown'; content: string }
   | { type: 'interactive'; html: string }
+  | { type: 'typst-svg'; svg: string }
+  | { type: 'typst-error'; source: string }
 
 export interface AMCProblem {
   id: string
@@ -77,7 +79,7 @@ export function parseAMCProblem(id: string, raw: string): AMCProblem {
 /** Split a raw solution string into markdown and interactive-html segments. */
 function parseSolutionSegments(solution: string): SolutionSegment[] {
   const segments: SolutionSegment[] = []
-  const blockRegex = /^```interactive-html\n([\s\S]*?)^```/gm
+  const blockRegex = /^```(interactive-html|typst-svg|typst-error)\n([\s\S]*?)^```/gm
   let lastIndex = 0
   let match: RegExpExecArray | null
   while ((match = blockRegex.exec(solution)) !== null) {
@@ -85,7 +87,15 @@ function parseSolutionSegments(solution: string): SolutionSegment[] {
       const md = solution.slice(lastIndex, match.index).trim()
       if (md) segments.push({ type: 'markdown', content: md })
     }
-    segments.push({ type: 'interactive', html: match[1]?.trim() ?? '' })
+    const kind = match[1] as 'interactive-html' | 'typst-svg' | 'typst-error'
+    const body = match[2]?.trim() ?? ''
+    if (kind === 'interactive-html') {
+      segments.push({ type: 'interactive', html: body })
+    } else if (kind === 'typst-svg') {
+      segments.push({ type: 'typst-svg', svg: body })
+    } else {
+      segments.push({ type: 'typst-error', source: body })
+    }
     lastIndex = blockRegex.lastIndex
   }
   const tail = solution.slice(lastIndex).trim()

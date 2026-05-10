@@ -1,0 +1,188 @@
+var e=`<!-- metadata -->
+2020 AMC10B
+Problem 10
+answer = 3
+
+
+# Problem
+A three-quarter sector of a circle of radius $4$ inches together with its interior can be rolled up to form the lateral surface area of a right circular cone by taping together along the two radii shown.  What is the volume of the cone in cubic inches?
+
+<figure class="amc-typst-figure" style="display:flex;justify-content:center;margin:1rem 0;"><img src="/assets/typst/76beb2cbcef1.svg" alt="typst diagram" style="max-width:100%;height:auto;" /></figure>
+
+
+answers = $3\\pi\\sqrt{5}$, $4\\pi\\sqrt{3}$, $3\\pi\\sqrt{7}$, $6\\pi \\sqrt{3}$, $6 \\pi \\sqrt{7}$
+
+
+# Solution
+
+When the sector is rolled into a cone, the radius of the sector becomes the **slant height** $\\ell = 4$, and the arc length of the sector becomes the **circumference** of the base circle.
+
+$$\\text{Arc length} = \\frac{3}{4}(2\\pi)(4) = 6\\pi \\implies 2\\pi r = 6\\pi \\implies r = 3$$
+
+$$h = \\sqrt{\\ell^2 - r^2} = \\sqrt{16 - 9} = \\sqrt{7}$$
+
+$$V = \\frac{1}{3}\\pi r^2 h = \\frac{1}{3}\\pi(9)\\sqrt{7} = \\boxed{3\\pi\\sqrt{7}}$$
+
+The answer is $\\textbf{(C)}\\ 3\\pi\\sqrt{7}$.
+
+\`\`\`interactive-html
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #0d0d1a; overflow: hidden; font-family: system-ui, sans-serif; }
+canvas { display: block; }
+#ui {
+  position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
+  background: rgba(15,15,40,0.92); border: 1px solid rgba(100,130,255,0.3);
+  border-radius: 12px; padding: 10px 22px; display: flex; align-items: center;
+  gap: 14px; min-width: 280px;
+}
+#ui label { color: #aab; font-size: 12px; white-space: nowrap; }
+input[type=range] {
+  flex: 1; -webkit-appearance: none; height: 4px; border-radius: 2px;
+  background: linear-gradient(to right, #4a9eff, #9b6bff); cursor: pointer; outline: none;
+}
+input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%;
+  background: #fff; cursor: pointer; box-shadow: 0 0 6px rgba(74,158,255,.7);
+}
+#hint { position: absolute; top: 12px; left: 12px; color: #445; font-size: 11px; line-height: 1.9; }
+</style></head><body>
+<div id="hint">Drag to orbit · Scroll to zoom</div>
+<div id="ui">
+  <label>Flat</label>
+  <input type="range" id="sl" min="0" max="100" value="0"/>
+  <label>Cone</label>
+</div>
+<script type="importmap">
+{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"}}
+<\/script>
+<script type="module">
+import * as THREE from 'three';
+import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+// Geometry constants
+const R = 4, SECTOR = 1.5 * Math.PI, RC = 3, HC = Math.sqrt(7);
+const NU = 50, NV = 90, NVERTS = (NU + 1) * (NV + 1);
+
+// Scene
+const scene = new THREE.Scene();
+scene.background = new THREE.Color(0x0d0d1a);
+const camera = new THREE.PerspectiveCamera(42, innerWidth / innerHeight, 0.01, 100);
+camera.position.set(6, 5, 9);
+
+const renderer = new THREE.WebGLRenderer({ antialias: true });
+renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+renderer.setSize(innerWidth, innerHeight);
+document.body.prepend(renderer.domElement);
+
+const orbit = new OrbitControls(camera, renderer.domElement);
+orbit.enableDamping = true; orbit.dampingFactor = 0.07;
+orbit.target.set(0, HC / 2, 0); orbit.update();
+
+// Lights
+scene.add(new THREE.AmbientLight(0x8899cc, 0.55));
+const sun = new THREE.DirectionalLight(0xffffff, 1.5);
+sun.position.set(6, 10, 5); scene.add(sun);
+const fill = new THREE.DirectionalLight(0x4466ff, 0.4);
+fill.position.set(-5, 3, -3); scene.add(fill);
+
+// Pre-compute flat (sector in XZ plane) and cone vertex positions
+const flatP = new Float32Array(NVERTS * 3);
+const coneP = new Float32Array(NVERTS * 3);
+for (let j = 0, k = 0; j <= NV; j++) {
+  for (let i = 0; i <= NU; i++, k++) {
+    const r = (i / NU) * R, phi = (j / NV) * SECTOR;
+    flatP[k*3]   = r * Math.cos(phi);
+    flatP[k*3+1] = 0;
+    flatP[k*3+2] = r * Math.sin(phi);
+    const phiC = phi * (2 * Math.PI / SECTOR);
+    coneP[k*3]   = r * (RC / R) * Math.cos(phiC);
+    coneP[k*3+1] = r * (HC / R);
+    coneP[k*3+2] = r * (RC / R) * Math.sin(phiC);
+  }
+}
+
+// Surface mesh
+const geo = new THREE.BufferGeometry();
+const posAttr = new THREE.BufferAttribute(new Float32Array(flatP), 3);
+posAttr.setUsage(THREE.DynamicDrawUsage);
+geo.setAttribute('position', posAttr);
+const idxArr = [];
+for (let j = 0; j < NV; j++) for (let i = 0; i < NU; i++) {
+  const a = j*(NU+1)+i, b=a+1, c=a+(NU+1), d=c+1;
+  idxArr.push(a,b,d, a,d,c);
+}
+geo.setIndex(idxArr);
+geo.computeVertexNormals();
+scene.add(new THREE.Mesh(geo, new THREE.MeshStandardMaterial({
+  color: 0x3d8ef0, side: THREE.DoubleSide, roughness: 0.3, metalness: 0.05,
+  transparent: true, opacity: 0.9
+})));
+
+// Edge lines
+function makeLine(n, color) {
+  const g = new THREE.BufferGeometry();
+  const a = new THREE.BufferAttribute(new Float32Array(n * 3), 3);
+  a.setUsage(THREE.DynamicDrawUsage);
+  g.setAttribute('position', a);
+  return new THREE.Line(g, new THREE.LineBasicMaterial({ color }));
+}
+
+// Edge 1: phi = 0 (points toward +X when flat, toward (RC, HC, 0) on cone)
+const e1f = new Float32Array((NU+1)*3), e1c = new Float32Array((NU+1)*3);
+for (let i = 0; i <= NU; i++) {
+  const r = (i/NU)*R;
+  e1f[i*3]=r; e1f[i*3+1]=0; e1f[i*3+2]=0;
+  e1c[i*3]=r*(RC/R); e1c[i*3+1]=r*(HC/R); e1c[i*3+2]=0;
+}
+
+// Edge 2: phi = SECTOR (points toward -Z when flat; meets edge 1 at cone)
+const e2f = new Float32Array((NU+1)*3), e2c = new Float32Array((NU+1)*3);
+for (let i = 0; i <= NU; i++) {
+  const r = (i/NU)*R;
+  e2f[i*3]=r*Math.cos(SECTOR); e2f[i*3+1]=0; e2f[i*3+2]=r*Math.sin(SECTOR);
+  // phi_cone = 2π → cos(2π)=1, sin(2π)=0 — same line as edge 1 on the cone
+  e2c[i*3]=r*(RC/R); e2c[i*3+1]=r*(HC/R); e2c[i*3+2]=0;
+}
+
+// Arc: r = R, phi from 0 to SECTOR (becomes full base circle on cone)
+const arcf = new Float32Array((NV+1)*3), arcc = new Float32Array((NV+1)*3);
+for (let j = 0; j <= NV; j++) {
+  const phi = (j/NV)*SECTOR, phiC = phi*(2*Math.PI/SECTOR);
+  arcf[j*3]=R*Math.cos(phi); arcf[j*3+1]=0; arcf[j*3+2]=R*Math.sin(phi);
+  arcc[j*3]=RC*Math.cos(phiC); arcc[j*3+1]=HC; arcc[j*3+2]=RC*Math.sin(phiC);
+}
+
+const GOLD = 0xffcc44;
+const line1 = makeLine(NU+1, GOLD), line2 = makeLine(NU+1, GOLD), arcLine = makeLine(NV+1, GOLD);
+scene.add(line1, line2, arcLine);
+
+function updateLine(line, f, c, t) {
+  const arr = line.geometry.attributes.position.array;
+  for (let i = 0; i < arr.length; i++) arr[i] = f[i] + t*(c[i]-f[i]);
+  line.geometry.attributes.position.needsUpdate = true;
+}
+
+function update(t) {
+  const pos = geo.attributes.position.array;
+  for (let i = 0; i < NVERTS*3; i++) pos[i] = flatP[i] + t*(coneP[i]-flatP[i]);
+  geo.attributes.position.needsUpdate = true;
+  geo.computeVertexNormals();
+  updateLine(line1, e1f, e1c, t);
+  updateLine(line2, e2f, e2c, t);
+  updateLine(arcLine, arcf, arcc, t);
+}
+
+document.getElementById('sl').addEventListener('input', e => update(e.target.value / 100));
+
+function animate() { requestAnimationFrame(animate); orbit.update(); renderer.render(scene, camera); }
+animate();
+
+window.addEventListener('resize', () => {
+  camera.aspect = innerWidth/innerHeight;
+  camera.updateProjectionMatrix();
+  renderer.setSize(innerWidth, innerHeight);
+});
+window.parent.postMessage({ iframeHeight: 500 }, '*');
+<\/script></body></html>
+\`\`\``;export{e as default};
